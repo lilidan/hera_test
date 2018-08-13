@@ -1,0 +1,1 @@
+../../../Hera/ios/Hera/Tools/WHEImageProcessor.h
