@@ -35,7 +35,7 @@
 #define FILE_LIMIT_SIZE    10 * 1024 * 1024
 
 /// 文件路径schema
-#define WDH_FILE_SCHEMA    @"wdfile://"
+#define WDH_FILE_SCHEMA    @"wxfile://"
 
 #endif /* WHEMacro_h */
 

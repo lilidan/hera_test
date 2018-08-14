@@ -98,6 +98,7 @@ static WHECommonUtil *utilInstance_ = nil;
 }
 
 
+
 + (UIFont *)transferToiOSFontSize:(CGFloat)oriFontSize
 {
     CGFloat sizeOffset = 1.5;

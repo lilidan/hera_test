@@ -4,82 +4,13 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/Hera/ios/Hera/Page/WDHPageBaseViewController.m"
-            timestampString = "555868280.792269"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-loadData"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/Hera/ios/Hera/Page/WDHPageBaseViewController.m"
-            timestampString = "555868293.524677"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "-loadData"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[WDHPageBaseViewController loadData]"
-                  moduleName = "HeraDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sgcy/web/wa/heraPlatforms/ios/Pods/Hera/ios/Hera/Page/WDHPageBaseViewController.m"
-                  timestampString = "555868293.5304151"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "179"
-                  endingLineNumber = "179"
-                  offsetFromSymbolStart = "1133">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__37-[WDHPageBaseViewController loadData]_block_invoke"
-                  moduleName = "HeraDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sgcy/web/wa/heraPlatforms/ios/Pods/Hera/ios/Hera/Page/WDHPageBaseViewController.m"
-                  timestampString = "555868293.5326951"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "179"
-                  endingLineNumber = "179"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_"
-                  moduleName = "HeraDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sgcy/web/wa/heraPlatforms/ios/Pods/Hera/ios/Hera/Page/WDHPageBaseViewController.m"
-                  timestampString = "555868293.534813"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "179"
-                  endingLineNumber = "179"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

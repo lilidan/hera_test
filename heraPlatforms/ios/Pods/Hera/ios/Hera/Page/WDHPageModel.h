@@ -43,8 +43,8 @@
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *pagePath;
-@property (nonatomic, copy) NSString *iconPath;
-@property (nonatomic, copy) NSString *selectedIconPath;
+@property (nonatomic, strong) UIImage *icon;
+@property (nonatomic, strong) UIImage *selectedIcon;
 @property (nonatomic, assign) BOOL isDefaultPath;
 
 @end

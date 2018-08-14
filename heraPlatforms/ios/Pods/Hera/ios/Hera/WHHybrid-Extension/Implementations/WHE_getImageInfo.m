@@ -52,7 +52,9 @@
 	NSURL *fileURL = nil;
 	if ([filePath hasPrefix:@"wdfile://"]) {
 		fileURL = [NSURL fileURLWithPath:[WHECommonUtil realPathForWDFile:filePath appId:app.appInfo.appId]];
-	} else {
+    }else if ([filePath hasPrefix:@"wxfile://"]) {
+        fileURL = [NSURL fileURLWithPath:[WHECommonUtil realPathForWDFile:filePath appId:app.appInfo.appId]];
+    } else {
 		fileURL = [NSURL URLWithString:filePath];
 	}
 	

@@ -172,13 +172,20 @@
     html = [html stringByAppendingString:@"</head>"];
     NSString *page_frame = [WDHFileManager pageFrameStr:@"demoapp2"];
     page_frame = [page_frame stringByReplacingOccurrencesOfString:@"</head>" withString:html];
-    NSString *view_js = [WDHFileManager localViewStr:@"demoapp2"];
     
+    NSString *scripthead = @"<head> <link rel=\"stylesheet\" href=\"../../../framework/css/index.css\">   <script src=\"../../../framework/script/view.js\" type=\"text/javascript\"></script>";
+    page_frame = [page_frame stringByReplacingOccurrencesOfString:@"<head>" withString:scripthead];
+    
+//    NSString *view_js = [WDHFileManager localViewStr:@"demoapp2"];
     
 	if (html) {
-        [self.webView evaluateJavaScript:view_js completionHandler:^(id _Nullable content, NSError * _Nullable error) {
-            [self.webView loadHTMLString:page_frame baseURL:baseUrl];
-        }];
+//        [self.webView loadHTMLString:html baseURL:baseUrl];
+
+        [self.webView loadHTMLString:page_frame baseURL:baseUrl];
+
+//        [self.webView evaluateJavaScript:view_js completionHandler:^(id _Nullable content, NSError * _Nullable error) {
+//            [self.webView loadHTMLString:page_frame baseURL:baseUrl];
+//        }];
         
 	}else {
 		HRLog(@"%@", error.localizedDescription);

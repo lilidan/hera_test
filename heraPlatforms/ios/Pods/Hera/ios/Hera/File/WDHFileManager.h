@@ -139,5 +139,8 @@
 + (NSString *)localViewStr:(NSString *)appId;
 
 + (NSString *)pageFrameStr:(NSString *)appId;
+
++ (NSString *)pageCssStr:(NSString *)appId;
+
 @end
 

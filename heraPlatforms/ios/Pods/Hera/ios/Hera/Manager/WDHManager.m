@@ -78,7 +78,7 @@
 	
 	//拦截schema
 	[NSURLProtocol registerClass:[WDHURLProtocol class]];
-	[NSURLProtocol wk_registerScheme:@"wdfile"];
+	[NSURLProtocol wk_registerScheme:@"wxfile"];
 	
 	//注册UA
 	NSString *userAgent = [[[UIWebView alloc] init] stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];

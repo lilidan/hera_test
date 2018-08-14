@@ -409,6 +409,11 @@ static NSString *PROJECT_ROOT_Framework = @"framework";
     return sourceDir;
 }
 
++ (NSString *)appCssDirPath:(NSString *)appId {
+    NSString *sourceDir = [[WDHFileManager projectRootDirPath] stringByAppendingPathComponent:@"framework/css"];
+    return sourceDir;
+}
+
 /**
  小程序临时存储目录
 
@@ -471,6 +476,13 @@ static NSString *PROJECT_ROOT_Framework = @"framework";
 
 + (NSString *)pageFrameStr:(NSString *)appId{
     NSString *serviceHtml = [[WDHFileManager appSourceDirPath:appId] stringByAppendingPathComponent:@"page-frame.html"];
+    NSData *data = [NSData dataWithContentsOfFile:serviceHtml];
+    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    return str;
+}
+
++ (NSString *)pageCssStr:(NSString *)appId{
+    NSString *serviceHtml = [[WDHFileManager appCssDirPath:appId] stringByAppendingPathComponent:@"index.css"];
     NSData *data = [NSData dataWithContentsOfFile:serviceHtml];
     NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     return str;

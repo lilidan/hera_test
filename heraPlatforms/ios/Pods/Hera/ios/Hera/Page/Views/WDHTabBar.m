@@ -162,9 +162,7 @@
 - (WDHTabBarItem *)addTabbarItem:(WDHTabbarItemStyle *)itemStyle
 {
     NSString *title = itemStyle.title;
-    NSString *iconPath = itemStyle.iconPath;
-    NSString *selectedIconPath = itemStyle.selectedIconPath;
-    
+
     WDHTabBarItem *barItem = [[WDHTabBarItem alloc] init];
     barItem.itemStyle = itemStyle;
     barItem.title = title;
@@ -179,12 +177,12 @@
 		[barItem setTitleTextAttributes:@{NSForegroundColorAttributeName: selectedColor} forState:UIControlStateSelected];
 	}
     
-    if (iconPath) {
-        barItem.image = [[WDHUtils imageWithImage:[UIImage imageWithContentsOfFile:iconPath] scaledToSize:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    if (itemStyle.icon) {
+        barItem.image = [[WDHUtils imageWithImage:itemStyle.icon scaledToSize:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     }
     
-    if (selectedIconPath) {
-        barItem.selectedImage = [[WDHUtils imageWithImage:[UIImage imageWithContentsOfFile:selectedIconPath] scaledToSize:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    if (itemStyle.selectedIcon) {
+        barItem.selectedImage = [[WDHUtils imageWithImage:itemStyle.selectedIcon scaledToSize:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     }
 
     

@@ -312,20 +312,24 @@
         style.position = tabBar[@"position"];
         style.borderStyle = tabBar[@"borderStyle"];
         NSMutableArray *list = [NSMutableArray new];
+        NSInteger index = 0;
         for (NSDictionary *item in tabBar[@"list"]) {
             WDHTabbarItemStyle *itemStyle = [[WDHTabbarItemStyle alloc] init];
             itemStyle.title = item[@"text"];
             itemStyle.pagePath = item[@"pagePath"];
-            if ([itemStyle.pagePath isEqualToString:pagePath]) {
+            if (index == 0) {
                 itemStyle.isDefaultPath = YES;
+                index ++;
             }
             
-            if (item[@"iconPath"]) {
-                itemStyle.iconPath = [basePath stringByAppendingPathComponent:item[@"iconPath"]];
+            if (item[@"iconData"]) {
+                itemStyle.icon = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:item[@"iconData"]  options:NSDataBase64DecodingIgnoreUnknownCharacters]];
             }
             
-            if (item[@"selectedIconPath"]) {
-                itemStyle.selectedIconPath = [basePath stringByAppendingPathComponent:item[@"selectedIconPath"]];
+            if (item[@"selectedIconData"]) {
+                itemStyle.selectedIcon = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:item[@"selectedIconData"]  options:NSDataBase64DecodingIgnoreUnknownCharacters]];
+
+//                itemStyle.selectedIcon = [UIImage imageWithData:[item[@"selectedIconData"] dataUsingEncoding:NSDataBase64EncodingEndLineWithLineFeed]];
             }
             
             [list addObject:itemStyle];
@@ -408,16 +412,25 @@
 
 - (void)parseConfig:(NSDictionary *)data model:(WDHPageModel *)model {
 	
-	if (data[@"window"]) {
-		model.windowStyle = [WDHPageModel parseWindowStyleData:data[@"window"]];
-		
-		if (data[@"window"][@"pages"]) {
-			model.pageStyle = [WDHPageModel parsePageStyleData:data[@"window"][@"pages"] path:[model pathKey]];
-		}
-		
+	if (data[@"global"]) {
+        if (data[@"global"][@"window"]) {
+            model.windowStyle = [WDHPageModel parseWindowStyleData:data[@"global"][@"window"]];
+        }
+
 	}else {
 		model.windowStyle = nil;
 	}
+
+    //TODO:增加统一的pages管理
+    if (data[@"page"]) {
+        NSDictionary *pages = data[@"page"];
+        [pages enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            if ([key isEqualToString:model.pagePath]) {
+                model.pageStyle = [WDHPageModel parsePageStyleData:obj path:@"window"];
+                *stop = YES;
+            }
+        }];
+    }
 }
 
 - (void)gotoPageAtIndex:(NSUInteger)atIndexFromTop {

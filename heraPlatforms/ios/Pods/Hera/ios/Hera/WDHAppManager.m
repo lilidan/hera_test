@@ -101,7 +101,7 @@
 	[WDHLoadingView removeAllLoading];
 	
 	// 注销schema拦截
-	[NSURLProtocol wk_unregisterScheme:@"wdfile"];
+	[NSURLProtocol wk_unregisterScheme:@"wxfile"];
 }
 
 @end

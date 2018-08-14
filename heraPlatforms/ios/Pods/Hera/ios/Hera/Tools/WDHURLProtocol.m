@@ -37,7 +37,8 @@
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
     BOOL isWdfile = [request.URL.scheme isEqualToString:@"wdfile"];
-	return isWdfile;
+    BOOL isWxfile = [request.URL.scheme isEqualToString:@"wxfile"];
+	return isWdfile || isWxfile;
 }
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
@@ -71,7 +72,8 @@
 - (NSString *)getFileName:(NSString *)filePath {
     
     NSRange range = [filePath rangeOfString: @"wdfile://"];
-    if (range.location == NSNotFound) {
+    NSRange range2 = [filePath rangeOfString: @"wxfile://"];
+    if (range.location == NSNotFound && range2.location == NSNotFound) {
         return filePath;
     }
 
