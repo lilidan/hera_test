@@ -22,7 +22,7 @@ void HRLog(NSString *format, ...) {
 	
 	NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
 	NSString *hodoerMessage = [NSString stringWithFormat:@"~~~~~Hera:------->(%@)", message];
-	NSLogv(hodoerMessage, args);
+	NSLog(hodoerMessage, args);
 	
 	va_end(args);
 }

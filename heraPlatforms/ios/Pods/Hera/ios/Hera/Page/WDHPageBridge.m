@@ -32,6 +32,10 @@
 
 @implementation WDHPageBridge
 
+
+NSString *const WHPageBridgeObject = @"WeixinJSBridge";
+NSString *const WHPageBridgeMethod_InvokeCallbackHandler = @"invokeCallbackHandler";
+
 //MARK: - 收到JS消息
 - (void)onReceiveJSMessage:(NSString *)name body:(id)body controller:(WDHPageBaseViewController *)controller
 {
@@ -55,6 +59,34 @@
 //MARK: - wk js invoke/publish handler
 - (void)invokeHandler:(id)data {
     HRLog(@"<page> invokeHandler: %@",data);
+    
+    if (data) {
+        NSString *e = data[@"event"];
+        if (!e || !self.manager) {
+            return;
+        }
+        
+        NSInteger callBackId = [data[@"callbackId"] integerValue];
+        if ([e isEqualToString:@"getCurrentRoute"]) {
+            NSDictionary *params = @{@"route":self.controller.pageModel.pagePath};
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:NULL];
+            NSString *param = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            
+            NSString *js = [NSString stringWithFormat:@"%@.%@('%d',%@)",WHPageBridgeObject,WHPageBridgeMethod_InvokeCallbackHandler,callBackId,param];
+            [self callJS:js controller:self.controller callback:nil];
+        }else if ([e isEqualToString:@"getLocalImgData"]){
+            // 这条协议无法理解...不知道如何回调，所以改为别的处理方式。
+            NSDictionary *params = data[@"paramsString"];
+//            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:NULL];
+//            NSString *param = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            
+            NSString *js = [NSString stringWithFormat:@"%@.%@('%d',%@)",WHPageBridgeObject,WHPageBridgeMethod_InvokeCallbackHandler,callBackId,params];
+            [self callJS:js controller:self.controller callback:^(id result) {
+                NSLog(@"");
+            }];
+        }
+    }
+    
 }
 
 - (void)publishHandler:(id)data

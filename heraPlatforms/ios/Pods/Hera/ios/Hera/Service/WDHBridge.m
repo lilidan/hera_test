@@ -97,9 +97,11 @@ NSString * const WHServiceBridgeMethod_InvokeCallbackHandler = @"invokeCallbackH
     BOOL isInnerApi = [self checkIsInnerRequestWithCommand:command param:paramsString callbackId:cId];
     if (isInnerApi) {
         if (self.managerDelegate && [self.managerDelegate respondsToSelector:@selector(service_innerApiRequest:param:callbackId:)]) {
+            //跳到page
             [self.managerDelegate service_innerApiRequest:command param:paramsString callbackId:cId];
         } 
     }else {
+        //内部调用
         if (self.managerDelegate && [self.managerDelegate respondsToSelector:@selector(service_apiRequest:param:callbackId:)]) {
             [self.managerDelegate service_apiRequest:command param:paramsString callbackId:cId];
         }

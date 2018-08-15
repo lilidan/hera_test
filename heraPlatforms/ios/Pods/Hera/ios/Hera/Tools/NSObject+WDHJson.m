@@ -52,7 +52,7 @@
 
 - (NSString *)wdh_jsonString
 {
-    NSData *data = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingPrettyPrinted error:nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingSortedKeys error:nil];
     if (!data) {
         return nil;
     }
@@ -67,7 +67,7 @@
 
 - (NSString *)wdh_jsonString
 {
-    NSData *data = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingPrettyPrinted error:nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingSortedKeys error:nil];
     if (!data) {
         return nil;
     }

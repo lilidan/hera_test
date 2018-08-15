@@ -39,6 +39,11 @@
     NSString *command = request.command;
     NSDictionary *param = request.param;
     
+    
+    if ([command isEqualToString:@"createRequestTask"]) {
+        command = @"request";
+    }
+    
     HRLog(@"api.command:%@",command);
     HRLog(@"api.param:%@",param);
     

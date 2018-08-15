@@ -4777,6 +4777,7 @@ var Reporter = function(e) {
             y < _.MAX_GET_LOCAL_IMG_DATA_MAX_COUNT ? (y += 1, "string" == typeof e.path ? E.getCurrentRoute({
               success: function(n) {
                 var i = n.route;
+                // (0, r.publish)("H5_LOG_MSG",{event:"2--------------",nn:n});
                 e.path = (0, v.getRealRoute)(i || "index.html", e.path), (0, r.invokeMethod)("getLocalImgData", e, {
                   beforeAll: t
                 })
@@ -14200,14 +14201,21 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
                 i.triggerEvent("error", e)
               }
             };
-          if (!/wechatdevtools/.test(n) && /iphone/.test(n)) /^(http|https):\/\//.test(e) || /^\s*data:image\//.test(e) || "" === e ? t(e) : /^wxfile:\/\//.test(e) ? (r.filePath = e, wx.getLocalImgData(r)) : (r.path = (this.ownerShadowRoot ? "/" : "") + e, wx.getLocalImgData(r));
-          else if (!/wechatdevtools/.test(n) && /android/.test(n))
-            if (/^wxfile:\/\//.test(e) || /^(http|https):\/\//.test(e) || /^\s*data:image\//.test(e)) t(e);
-            else {
-              var o = wx.getRealRoute(window.__route__, (i.ownerShadowRoot ? "/" : "") + e);
-              t(o)
+
+          var o = wx.getRealRoute(window.__route__, (i.ownerShadowRoot ? "/" : "") + e);
+          t(o)
+          if (!/wechatdevtools/.test(n) && /iphone/.test(n)) {
+            if (/^(http|https):\/\//.test(e) || /^\s*data:image\//.test(e) || "" === e) {
+              t(e)
+            }else{
+              if (/^wxfile:\/\//.test(e)) {
+                (r.filePath = e, wx.getLocalImgData(r))
+              }else{
+                var o = wx.getRealRoute(window.__route__, (i.ownerShadowRoot ? "/" : "") + e);
+                t(o)
+              }
             }
-          else t(e.replace(/^wxfile:\/\//, "http://wxfile.open.weixin.qq.com/"))
+          }
         }
       },
       _showImage: function(t) {

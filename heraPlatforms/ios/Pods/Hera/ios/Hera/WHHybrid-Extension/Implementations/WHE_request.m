@@ -127,7 +127,9 @@ NSString *WHERequestContentTypeJson = @"application/json";
                                             }
                                             
                                             if (data) {
-                                                NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//                                                NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                                NSError *error;
+                                                NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSUTF8StringEncoding error:&error];
                                                 
                                                 HRLog(@"WHERequest response:%@", result);
                                                 
@@ -138,6 +140,8 @@ NSString *WHERequestContentTypeJson = @"application/json";
                                                         success(@{@"statusCode":@(statusCode)});
                                                     }
                                                 }
+                                                
+                                                
                                             }else {
                                                 
                                                 if (error.code == NSURLErrorCancelled) {

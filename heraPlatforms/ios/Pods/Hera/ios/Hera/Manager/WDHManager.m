@@ -107,6 +107,9 @@
 	self.pageManager.config = self.service.appConfig;
 	NSDictionary *tabbar = self.service.appConfig[@"tabBar"];
     NSString *rootPagePath = self.service.appConfig[@"root"];
+    if (!rootPagePath) {
+        rootPagePath = self.service.appConfig[@"entryPagePath"];
+    }
     [self.pageManager startPage:[WDHFileManager appSourceDirPath:_appInfo.appId] pagePath:rootPagePath isRoot:YES openNewPage:YES isTabPage:tabbar!=nil];
 }
 
@@ -203,6 +206,14 @@
 		[self.service invokeCallbackHandler:callbackId param:resultJsonString];
 	};
 	
+//    if ([command isEqualToString:@"createRequestTask"]) {
+//        NSDictionary *result = @{@"requestTaskId":@(arc4random()%100)};
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            request.callback(result);
+//        });
+//        return;
+//    }
+//
 	[self.extensionApi didRecieveHybridApiWithApi:request];
 }
 

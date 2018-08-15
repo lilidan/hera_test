@@ -12442,41 +12442,25 @@ var __WAServiceStartTime__ = Date.now();
           t = g.get(this);
         v.set(this, "sending"), _.set(this, Date.now());
         var n = void 0;
-        (0, c.invokeMethod)("createRequestTask", {
+        (0, c.invokeMethod)("request", {
           data: t.data,
           url: t.url,
           header: t.header,
           method: t.method,
           responseType: t.responseType,
-          __skipDomainCheck__: t.__skipDomainCheck__,
-          success: function(t) {
-            h.set(e, t.requestTaskId), y += 1, m[t.requestTaskId] = e
-          },
-          fail: function(r) {
-            n = r.errMsg;
-            var o = t.url,
-              i = Date.now() - _.get(e);
-            (0, l.reportNetworkAPI)("request", o, 2, i, n)
-          },
-          complete: function(t) {
-            v.set(e, "done")
+          success: t.success,
+          fail: t.fail,
+          complete: t.complete
+        }, {
+          beforeSuccess: function(t) {
+            if ("json" === e.dataType) try {
+              t.data = JSON.parse(t.data)
+            } catch (e) {}
+            t.statusCode = parseInt(t.statusCode)
           }
-        }), n ? setTimeout(function() {
-          var e = {
-            errMsg: n.replace("createRequestTask", "request")
-          };
-          "function" == typeof t.fail && t.fail(e), "function" == typeof t.complete && t.complete(e)
-        }, 0) : (w.on(h.get(this) + "success", function(e) {
-          if (e.errMsg = "request:ok", "string" == typeof e.data && 65279 === e.data.charCodeAt(0) && (e.data = e.data.substr(1)), "json" === t.dataType) try {
-            e.data = JSON.parse(e.data)
-          } catch (e) {}
-          e.statusCode = parseInt(e.statusCode), "object" === a(e.header) && (e.header = Object.keys(e.header).reduce(function(t, n) {
-            return Array.isArray(e.header[n]) ? t[n] = e.header[n].join(",") : "string" == typeof e.header[n] && (t[n] = e.header[n]), t
-          }, {})), "function" == typeof t.success && t.success(e), "function" == typeof t.complete && t.complete(e)
-        }), w.on(h.get(this) + "fail", function(e) {
-          e.errMsg = "request:fail " + e.errMsg, "function" == typeof t.fail && t.fail(e), "function" == typeof t.complete && t.complete(e)
-        }))
+        })
       }
+
       Object.defineProperty(t, "__esModule", {
         value: !0
       });
