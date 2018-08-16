@@ -16,7 +16,6 @@
 		5526E66B1FBC472A0014ACE6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5526E66A1FBC472A0014ACE6 /* main.m */; };
 		5526E6731FBC47A90014ACE6 /* LinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5526E6711FBC47A80014ACE6 /* LinkViewController.m */; };
 		5526E6761FBC47AE0014ACE6 /* RetrieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5526E6751FBC47AE0014ACE6 /* RetrieveViewController.m */; };
-		D6A120DB2121C2280057250D /* demoapp2.zip in Resources */ = {isa = PBXBuildFile; fileRef = D6A120DA2121C2270057250D /* demoapp2.zip */; };
 		E1334BDF78268BE08559F62D /* libPods-HeraDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3003F2DFCDDC35F6B4BF659 /* libPods-HeraDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +38,6 @@
 		5526E6751FBC47AE0014ACE6 /* RetrieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveViewController.m; sourceTree = "<group>"; };
 		863C00F83D5E589561D12650 /* Pods-HeraDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeraDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeraDemo/Pods-HeraDemo.release.xcconfig"; sourceTree = "<group>"; };
 		D3003F2DFCDDC35F6B4BF659 /* libPods-HeraDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HeraDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6A120DA2121C2270057250D /* demoapp2.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = demoapp2.zip; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +82,6 @@
 		5526E65A1FBC472A0014ACE6 /* HeraDemo */ = {
 			isa = PBXGroup;
 			children = (
-				D6A120DA2121C2270057250D /* demoapp2.zip */,
 				55047AE61FE7D4510070F9E1 /* demoapp.zip */,
 				5526E6741FBC47AD0014ACE6 /* RetrieveViewController.h */,
 				5526E6751FBC47AE0014ACE6 /* RetrieveViewController.m */,
@@ -173,7 +170,6 @@
 			files = (
 				5526E6681FBC472A0014ACE6 /* LaunchScreen.storyboard in Resources */,
 				5526E6651FBC472A0014ACE6 /* Assets.xcassets in Resources */,
-				D6A120DB2121C2280057250D /* demoapp2.zip in Resources */,
 				5526E6631FBC472A0014ACE6 /* Main.storyboard in Resources */,
 				55047AE71FE7D4510070F9E1 /* demoapp.zip in Resources */,
 			);

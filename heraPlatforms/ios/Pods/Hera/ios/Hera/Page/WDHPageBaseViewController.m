@@ -170,13 +170,13 @@
 	NSError *error = nil;
 	NSString *html = [[NSString alloc] initWithContentsOfURL:[NSURL fileURLWithPath:urlWithQueryArray.firstObject] encoding:NSUTF8StringEncoding error:&error];
     html = [html stringByAppendingString:@"</head>"];
-    NSString *page_frame = [WDHFileManager pageFrameStr:@"demoapp2"];
+    NSString *page_frame = [WDHFileManager pageFrameStr:@"demoapp"];
     page_frame = [page_frame stringByReplacingOccurrencesOfString:@"</head>" withString:html];
     
     NSString *scripthead = @"<head> <link rel=\"stylesheet\" href=\"../../../framework/css/index.css\">   <script src=\"../../../framework/script/view.js\" type=\"text/javascript\"></script>";
     page_frame = [page_frame stringByReplacingOccurrencesOfString:@"<head>" withString:scripthead];
     
-//    NSString *view_js = [WDHFileManager localViewStr:@"demoapp2"];
+//    NSString *view_js = [WDHFileManager localViewStr:@"demoapp"];
     
 	if (html) {
 //        [self.webView loadHTMLString:html baseURL:baseUrl];

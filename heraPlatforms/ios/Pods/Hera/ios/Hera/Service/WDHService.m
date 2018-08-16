@@ -61,26 +61,36 @@ NSString * kWDHServiceOpenTypeRedirectTo = @"redirectTo";
 		configuration.userContentController = userContentController;
 		
 		WKWebView *webView = [[WKWebView alloc] initWithFrame:(CGRect){0,0,1,1} configuration:configuration];
+        
+        NSString *htmlStr = @"<html><head>###<script src=\"../../../framework/script/service.js\" type=\"text/javascript\"></script><script src=\"app-service.js\"></script></head><body><script>WeixinJSBridge.publish('serviceReady', __wxConfig, [100000]);</script></body></html>";
+        
 		NSString *service_js = appConfiguration[@"service_js"];
         NSString *app_config = appConfiguration[@"app_config"];
-        NSString *local_service = appConfiguration[@"local_service_js"];
-        NSString *ready_js = @"WeixinJSBridge.publish('serviceReady', __wxConfig, [100000]);";
-        [webView evaluateJavaScript:app_config completionHandler:^(id _Nullable content, NSError * _Nullable error) {
-            if (!error) {
-                [webView evaluateJavaScript:local_service  completionHandler:^(id _Nullable content, NSError * _Nullable error) {
-                    if (!error) {
-                        [webView evaluateJavaScript:service_js completionHandler:^(id _Nullable content, NSError * _Nullable error) {
-                            if (!error) {
-                                [webView evaluateJavaScript:ready_js completionHandler:^(id _Nullable content, NSError * _Nullable error) {
-                                    NSLog(@"");
-                                }];
-                            }
-                        }];
-                    }
-                    
-                }];
-            }
-        }];
+//        NSString *local_service = appConfiguration[@"local_service_js"];
+//        NSString *ready_js = @"WeixinJSBridge.publish('serviceReady', __wxConfig, [100000]);";
+        NSString *dir = appConfiguration[@"root"];
+        NSURL *baseUrl = [NSURL fileURLWithPath:dir];
+        app_config = [[@"<script>" stringByAppendingString:app_config] stringByAppendingString:@"</script>"];
+        htmlStr = [htmlStr stringByReplacingOccurrencesOfString:@"###" withString:app_config];
+//         [webView loadHTMLString:htmlStr baseURL:baseUrl];
+        [webView loadHTMLString:htmlStr baseURL:baseUrl];
+//        [webView evaluateJavaScript:app_config completionHandler:^(id _Nullable content, NSError * _Nullable error) {
+//            if (!error) {
+//
+////                [webView evaluateJavaScript:local_service  completionHandler:^(id _Nullable content, NSError * _Nullable error) {
+////                    if (!error) {
+////                        [webView evaluateJavaScript:service_js completionHandler:^(id _Nullable content, NSError * _Nullable error) {
+////                            if (!error) {
+////                                [webView evaluateJavaScript:ready_js completionHandler:^(id _Nullable content, NSError * _Nullable error) {
+////                                    NSLog(@"");
+////                                }];
+////                            }
+////                        }];
+////                    }
+////
+////                }];
+//            }
+//        }];
 
 //        [webView loadRequest:request];
 		self.webView = webView;

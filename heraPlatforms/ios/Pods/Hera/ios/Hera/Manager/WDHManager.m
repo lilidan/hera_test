@@ -85,7 +85,7 @@
 	NSString * customUA = [userAgent stringByAppendingFormat:@" Hera(JSBridgeVersion/3.0)"];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : customUA}];
 	
-    NSDictionary *configuration = @{@"service_js":[WDHFileManager appServiceJSStr:_appInfo.appId],@"root":[WDHFileManager appSourceDirPath:_appInfo.appId],@"app_config":[WDHFileManager appConfigString:_appInfo.appId],@"local_service_js":[WDHFileManager localServiceStr:_appInfo.appId],@"local_view_js":[WDHFileManager localViewStr:_appInfo.appId]};
+    NSDictionary *configuration = @{@"service_js":[WDHFileManager appServiceJSStr:_appInfo.appId],@"root":[WDHFileManager appSourceDirPath:_appInfo.appId],@"app_config":[WDHFileManager appConfigString:_appInfo.appId],@"local_service_js":[WDHFileManager localServiceStr:_appInfo.appId],@"local_view_js":[WDHFileManager localViewStr:_appInfo.appId],@"root":[WDHFileManager appSourceDirPath:_appInfo.appId]};
 	self.service = [[WDHService alloc] initWithAppConfiguration:configuration manager:self];
 }
 
@@ -176,7 +176,9 @@
 		[self.service callSubscribeHandlerWithEvent:eventName jsonParam:param webId:webId];
 	} else if ([eventName isEqualToString:@"custom_event_H5_CONSOLE_LOG"]) {
 		HRLog(@"WDHodoer custom_event_H5_CONSOLE_LOG: %@", param);
-    } else {
+    } else if ([eventName isEqualToString:@"custom_event_vdSync"]) {
+        [self.service callSubscribeHandlerWithEvent:eventName jsonParam:param webId:webId];
+    }else {
         [self.service callSubscribeHandlerWithEvent:eventName jsonParam:param webId:webId];
     }
 	

@@ -54,7 +54,7 @@
 	WDHAppInfo *appInfo = [[WDHAppInfo alloc] init];
 	
 	//小程序标识
-	appInfo.appId = @"demoapp2";
+	appInfo.appId = @"demoapp";
 	
 	//标识宿主app业务用户id
 	appInfo.userId = @"userId";
